@@ -1,4 +1,4 @@
 import '@scss/main.scss';
-import Login from '@modules/login.js';
-
-Login();
+import '@modules/login';
+import '@modules/menu';
+import '@modules/partners';

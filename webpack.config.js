@@ -61,6 +61,14 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             template: './index.html',
+            filename: 'index.html',
+            minify: {
+                collapseWhitespace: isProd
+            }
+        }),
+        new HTMLWebpackPlugin({
+            template: './restaurant.html',
+            filename: 'restaurant.html',
             minify: {
                 collapseWhitespace: isProd
             }
@@ -69,18 +77,14 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
         }),
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //         {
-        //             from: path.resolve(__dirname, 'src/assets/favicon'),
-        //             to: path.resolve(__dirname, 'momentum/assets/favicon')
-        //         },
-        //         {
-        //             from: path.resolve(__dirname, 'src/assets/sounds'),
-        //             to: path.resolve(__dirname, 'momentum/assets/sounds')
-        //         }
-        //     ]
-        // })
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src/assets/img/'),
+                    to: path.resolve(__dirname, 'dist/assets/img/')
+                },
+            ]
+        })
     ],
     module: {
         rules: [
